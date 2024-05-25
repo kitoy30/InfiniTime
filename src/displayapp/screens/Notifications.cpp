@@ -247,7 +247,7 @@ namespace {
 Notifications::NotificationItem::NotificationItem(Pinetime::Controllers::AlertNotificationService& alertNotificationService,
                                                   Pinetime::Controllers::MotorController& motorController)
   : NotificationItem("Notification",
-                     "No notification to display",
+                     "Aucunes notifications",
                      0,
                      Controllers::NotificationManager::Categories::Unknown,
                      0,
@@ -313,7 +313,7 @@ Notifications::NotificationItem::NotificationItem(const char* title,
       break;
     case Controllers::NotificationManager::Categories::IncomingCall: {
       lv_obj_set_height(subject_container, 108);
-      lv_label_set_text_static(alert_subject, "Incoming call from");
+      lv_label_set_text_static(alert_subject, "Appel entrant de:");
 
       lv_obj_t* alert_caller = lv_label_create(subject_container, nullptr);
       lv_obj_align(alert_caller, alert_subject, LV_ALIGN_OUT_BOTTOM_LEFT, 0, 0);

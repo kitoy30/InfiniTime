@@ -45,7 +45,7 @@ namespace Pinetime {
         Controllers::Settings& settingsController;
         Pinetime::Controllers::FS& filesystem;
 
-        static constexpr const char* title = "Watch face";
+        static constexpr const char* title = "Cadran de \n la montre";
         static constexpr const char* symbol = Symbols::home;
 
         ScreenList<nScreens> screens;

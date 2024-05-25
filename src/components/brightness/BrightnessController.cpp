@@ -107,11 +107,11 @@ const char* BrightnessController::ToString() {
     case Levels::Off:
       return "Off";
     case Levels::Low:
-      return "Low";
+      return "Faible";
     case Levels::Medium:
-      return "Medium";
+      return "Moyen";
     case Levels::High:
-      return "High";
+      return "Fort";
     default:
       return "???";
   }

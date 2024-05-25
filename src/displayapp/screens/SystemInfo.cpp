@@ -81,11 +81,11 @@ std::unique_ptr<Screen> SystemInfo::CreateScreen1() {
   lv_label_set_text_fmt(label,
                         "#FFFF00 InfiniTime#\n\n"
                         "#808080 Version# %ld.%ld.%ld\n"
-                        "#808080 Short Ref# %s\n"
-                        "#808080 Build date#\n"
+                        "#808080 Ref # %s\n"
+                        "#808080 Date de compilation#\n"
                         "%s\n"
                         "%s\n\n"
-                        "#808080 Bootloader# %s",
+                        "#808080 Charg. d'amorçage#\n %s",
                         Version::Major(),
                         Version::Minor(),
                         Version::Patch(),
@@ -146,14 +146,14 @@ std::unique_ptr<Screen> SystemInfo::CreateScreen2() {
   lv_label_set_recolor(label, true);
   lv_label_set_text_fmt(label,
                         "#808080 Date# %04d-%02d-%02d\n"
-                        "#808080 Time# %02d:%02d:%02d\n"
-                        "#808080 Uptime#\n %02lud %02lu:%02lu:%02lu\n"
-                        "#808080 Battery# %d%%/%03imV\n"
-                        "#808080 Backlight# %s\n"
-                        "#808080 Last reset# %s\n"
+                        "#808080 Heure# %02d:%02d:%02d\n"
+                        "#808080 Démarrer depuis#\n %02luj %02lu:%02lu:%02lu\n"
+                        "#808080 Batterie# %d%%/%03imV\n"
+                        "#808080 Rétroéclairage#\n %s\n"
+                        "#808080 Dern réinit.# \n%s\n"
                         "#808080 Accel.# %s\n"
                         "#808080 Touch.# %x.%x.%x\n"
-                        "#808080 Model# %s",
+                        "#808080 Modèle# %s",
                         dateTimeController.Year(),
                         static_cast<uint8_t>(dateTimeController.Month()),
                         dateTimeController.Day(),
@@ -191,11 +191,11 @@ std::unique_ptr<Screen> SystemInfo::CreateScreen3() {
                         " %02x:%02x:%02x:%02x:%02x:%02x"
                         "\n"
                         "\n"
-                        "#808080 Memory heap#\n"
-                        " #808080 Free# %d\n"
-                        " #808080 Min free# %d\n"
-                        " #808080 Alloc err# %d\n"
-                        " #808080 Ovrfl err# %d\n",
+                        "#808080 Mémoire :#\n"
+                        " #808080 Libre# %d\n"
+                        " #808080 Min Libre# %d\n"
+                        " #808080 Err alloc.# %d\n"
+                        " #808080 Err dépac.# %d\n",
                         bleAddr[5],
                         bleAddr[4],
                         bleAddr[3],
@@ -226,11 +226,11 @@ std::unique_ptr<Screen> SystemInfo::CreateScreen4() {
 
   lv_table_set_cell_value(infoTask, 0, 0, "#");
   lv_table_set_col_width(infoTask, 0, 30);
-  lv_table_set_cell_value(infoTask, 0, 1, "S"); // State
+  lv_table_set_cell_value(infoTask, 0, 1, "E"); // State
   lv_table_set_col_width(infoTask, 1, 30);
-  lv_table_set_cell_value(infoTask, 0, 2, "Task");
+  lv_table_set_cell_value(infoTask, 0, 2, "Tache");
   lv_table_set_col_width(infoTask, 2, 80);
-  lv_table_set_cell_value(infoTask, 0, 3, "Free");
+  lv_table_set_cell_value(infoTask, 0, 3, "Libre");
   lv_table_set_col_width(infoTask, 3, 90);
 
   auto nb = uxTaskGetSystemState(tasksStatus, maxTaskCount, nullptr);
@@ -262,7 +262,7 @@ std::unique_ptr<Screen> SystemInfo::CreateScreen4() {
     lv_table_set_cell_value(infoTask, i + 1, 1, buffer);
     lv_table_set_cell_value(infoTask, i + 1, 2, tasksStatus[i].pcTaskName);
     if (tasksStatus[i].usStackHighWaterMark < 20) {
-      snprintf(buffer, sizeof(buffer), "%" PRIu16 " low", tasksStatus[i].usStackHighWaterMark);
+      snprintf(buffer, sizeof(buffer), "%" PRIu16 " faible", tasksStatus[i].usStackHighWaterMark);
     } else {
       snprintf(buffer, sizeof(buffer), "%" PRIu16, tasksStatus[i].usStackHighWaterMark);
     }
@@ -275,9 +275,9 @@ std::unique_ptr<Screen> SystemInfo::CreateScreen5() {
   lv_obj_t* label = lv_label_create(lv_scr_act(), nullptr);
   lv_label_set_recolor(label, true);
   lv_label_set_text_static(label,
-                           "Software Licensed\n"
-                           "under the terms of\n"
-                           "the GNU General\n"
+                           "Logiciel \n"
+                           "publié sous la license\n"
+                           "GNU General\n"
                            "Public License v3\n"
                            "#808080 Source code#\n"
                            "#FFFF00 https://github.com/#\n"

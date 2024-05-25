@@ -16,8 +16,8 @@ namespace {
 
   constexpr std::array<Option, 3> options = {{
     {Pinetime::Controllers::Settings::ChimesOption::None, "Off"},
-    {Pinetime::Controllers::Settings::ChimesOption::Hours, "Every hour"},
-    {Pinetime::Controllers::Settings::ChimesOption::HalfHours, "Every 30 mins"},
+    {Pinetime::Controllers::Settings::ChimesOption::Hours, "Chq. heures"},
+    {Pinetime::Controllers::Settings::ChimesOption::HalfHours, "Chq. 30 mins"},
   }};
 
   std::array<CheckboxList::Item, CheckboxList::MaxItems> CreateOptionArray() {
@@ -48,7 +48,7 @@ SettingChimes::SettingChimes(Pinetime::Controllers::Settings& settingsController
   : checkboxList(
       0,
       1,
-      "Chimes",
+      "Sonnerie",
       Symbols::clock,
       GetDefaultOption(settingsController.GetChimeOption()),
       [&settings = settingsController](uint32_t index) {

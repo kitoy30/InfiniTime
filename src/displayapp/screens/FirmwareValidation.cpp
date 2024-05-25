@@ -32,10 +32,10 @@ FirmwareValidation::FirmwareValidation(Pinetime::Controllers::FirmwareValidator&
   lv_obj_set_width(labelIsValidated, 240);
 
   if (validator.IsValidated()) {
-    lv_label_set_text_static(labelIsValidated, "You have already\n#00ff00 validated# this firmware#");
+    lv_label_set_text_static(labelIsValidated, "\n#00ff00 Valider#ce micrologiciel# ?");
   } else {
     lv_label_set_text_static(labelIsValidated,
-                             "Please #00ff00 Validate# this version or\n#ff0000 Reset# to rollback to the previous version.");
+                             "Veuilez #00ff00 Valider# ce micrologiciel ou\n#ff0000 réinitialiser# pour revenir sur l'ancienne version");
 
     buttonValidate = lv_btn_create(lv_scr_act(), nullptr);
     buttonValidate->user_data = this;
@@ -45,7 +45,7 @@ FirmwareValidation::FirmwareValidation(Pinetime::Controllers::FirmwareValidator&
     lv_obj_set_style_local_bg_color(buttonValidate, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, Colors::highlight);
 
     labelButtonValidate = lv_label_create(buttonValidate, nullptr);
-    lv_label_set_text_static(labelButtonValidate, "Validate");
+    lv_label_set_text_static(labelButtonValidate, "Valider");
 
     buttonReset = lv_btn_create(lv_scr_act(), nullptr);
     buttonReset->user_data = this;
@@ -55,7 +55,7 @@ FirmwareValidation::FirmwareValidation(Pinetime::Controllers::FirmwareValidator&
     lv_obj_set_event_cb(buttonReset, ButtonEventHandler);
 
     labelButtonReset = lv_label_create(buttonReset, nullptr);
-    lv_label_set_text_static(labelButtonReset, "Reset");
+    lv_label_set_text_static(labelButtonReset, "Réinitialiser");
   }
 }
 

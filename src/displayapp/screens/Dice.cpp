@@ -54,7 +54,7 @@ Dice::Dice(Controllers::MotionController& motionController,
                                       LV_LABEL_LONG_EXPAND,
                                       0,
                                       LV_LABEL_ALIGN_CENTER,
-                                      "count",
+                                      "Compter",
                                       lv_scr_act(),
                                       LV_ALIGN_IN_TOP_LEFT,
                                       0,
@@ -65,7 +65,7 @@ Dice::Dice(Controllers::MotionController& motionController,
                                       LV_LABEL_LONG_EXPAND,
                                       0,
                                       LV_LABEL_ALIGN_CENTER,
-                                      "sides",
+                                      "Cotés",
                                       nCounterLabel,
                                       LV_ALIGN_OUT_RIGHT_MID,
                                       20,
@@ -166,10 +166,10 @@ void Dice::Roll() {
     if (dCounter.GetValue() == 2) {
       switch (resultTotal) {
         case 1:
-          lv_label_set_text(resultIndividualLabel, "HEADS");
+          lv_label_set_text(resultIndividualLabel, "TÊTES");
           break;
         case 2:
-          lv_label_set_text(resultIndividualLabel, "TAILS");
+          lv_label_set_text(resultIndividualLabel, "QUEUES");
           break;
       }
     }
